@@ -1,12 +1,12 @@
 # Trust Notifier
 
-A Notification Application that polls server instances from Salesforce.com's
+A Notification Application written in Java Spring Boot that polls server instances from Salesforce.com's
 [Trust API](https://api.status.salesforce.com/v1/instances) and informs subscribers
 via email whether any server instances they have subscribed to have had a change in status.
 
 ## Prerequisites
 
-On the machine where your are running this application you will need the following:
+On the machine where you are running this application you will need the following:
 
 - MongoDB 3.x
 - Java JDK 8
@@ -14,17 +14,15 @@ On the machine where your are running this application you will need the followi
 ## Installation <a name="installation"></a>
 
 1. Update the folllowing properties in the `src/main/resources/application.properties` file:
-    - `spring.mail.username` This is the email account notifications will be sent from, same as above
-    - `spring.mail.password` This is email password for the above account
+    - `spring.mail.username` This is the email account notifications will be sent from.
+    - `spring.mail.password` This is the email password for the above account.
     - `com.riz.exercise.application.email.sender` This is the email reply-to address (usually same as the above sender 
-    email id)
+    email id).
     - Other `spring.mail.*` properties that corresponding with your SMTP server settings. Leave as is if you will be 
     sending emails from your own gmail.com email account.
     
-2. By default the notifier job runs every quarter of the hour, on the hour 
-(e.g.: 1:30, 1:45, 2:00, 2:15 ...).
- If you don't want to wait that long you can update the 
- `com.riz.exercise.application.scheduler.cron` property.
+2. By default the notifier job runs every quarter of the hour, on the hour (e.g.: 1:30, 1:45, 2:00, 2:15 ...).
+ If you don't want to wait that long you can update the `com.riz.exercise.application.scheduler.cron` property.
 
 
 #### Compile
@@ -105,7 +103,7 @@ The following validation rules apply to the server key field:
 
 #### Receiving Email Notifications
 
-Mostly, the server instances have a status of 'OK'. This makes it hard to see the email notification in action.
+Mostly, the server instances have a status of 'OK'. This makes it hard to see the email notification in action.<a name="updateserverstatus"></a>
 
 To simulate a change in status and the sending of an email notification do the following:
 - Go to the subscribers page: [http://localhost:8080/subscribers](http://localhost:8080/subscribers). 
@@ -126,12 +124,12 @@ If everything works, you will see an email like:
 ```
 Hello John Smith,
 
-There has been a change of status in 1 SFDC server instances you are subscribing to.
+There has been a change of status in 3 SFDC server instances you are subscribing to.
 
 Here are the current statuses of those servers that have changed:
 
-CS62 -> OK
 EU5 -> MINOR_INCIDENT_CORE
+CS62 -> OK
 CS85 -> OK
 
 Thank you.
@@ -155,3 +153,29 @@ mongod server as the embedded mongod server's port is also the default 27017.
 
 However, sometimes, running the Integration test will result in your local mongod server to terminate, in which case 
 simply run the test again (or even a third time) for the integration test specification to run.
+
+##### Frameworks and plugins used
+- Spring Boot (with dependencies: Web, Rest, Thymeleaf, Mail, MongoDB)
+- Thymeleaf (UI Views)
+- Spock and Mockito (Testing)
+- Google Guava, Google collections, Lambda expressions
+
+## Possible Enhancements
+
+#### Better User Feedback
+
+- Ability to delete subscribers and servers via the web UI
+- Better validation, error reporting and operation result in web UI
+- Notification email to distinguish between a newly added server vs. one whose status has changed
+
+#### Better Developer Feedback and Usability
+
+- **IMPLEMENTED**: [Manually update server status in the local datastore](#updateserverstatus) (to simulate server status change, and thus test email notification)
+- Manual, ad-hoc invocation of the Notifier Job (say, via an http GET request) for testing
+- Run unit tests during compilation, and integration tests during packaging/deployment
+
+#### Better decoupling of code components
+
+- **Mongo/Datastore**: Decouple mongo dependency from the application code via a generic data store interface. This allows multiple additional data access mechanisms to be configured with the application (e.g.: Redis, REST, SQL database, etc) and one to be actively applied to the runtime using, say, the strategy pattern via an application configuration file.
+
+- **Email/Notification**: Decouple the email dependency from the application code via a generic notification interface. This allows multiple notification strategies to be employed and configured in the application (e.g.: PagerDuty, REST API, Message Queues) and used simultaneously using, say, the fan-out messaging pattern. E.g.: In addition to an email, PagerDuty.com's API could be invoked simultaneously to alert DevOps on their pager or phone.
