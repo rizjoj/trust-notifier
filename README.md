@@ -155,3 +155,28 @@ mongod server as the embedded mongod server's port is also the default 27017.
 
 However, sometimes, running the Integration test will result in your local mongod server to terminate, in which case 
 simply run the test again (or even a third time) for the integration test specification to run.
+
+##### Frameworks and plugins used
+- Spring Boot (with dependencies: Web, Rest, Thymeleaf, Mail, MongoDB)
+- Thymeleaf (UI Views)
+- Spock and Mockito (Testing)
+
+## Possible Enhancements
+
+#### Better User Feedback
+
+- Ability to delete subscribers and servers via the web UI
+- Better validation, error reporting and operation result in web UI
+- Notification email to distinguish between a newly added server vs. one whose status has changed
+
+#### Better Developer Feedback and Usability
+
+- Manually update server status in the local datastore (to simulate server status change, and thus test email notification) **IMPLEMENTED**
+- Manual, ad-hoc invokation of the Notifier Job (say, via an http GET request) for testing
+- Run unit tests during compilation, and integration tests during packaging/deployment
+
+#### Better decoupling of code components
+
+- **Mongo/Datastore**: Decouple mongo dependency from the application code via a generic data store interface. This allows multiple additional data access mechanisms to be configured with the application (e.g.: Redis, REST, SQL database, etc) and one to be actively applied to the runtime using, say, the strategy pattern via an application configuration file.
+
+- **Email/Notification**: Decouple the email dependency from the application code via a generic notification interface. This allows multiple notification strategies to be employed and configured in the application (e.g.: PagerDuty, REST API, Message Queues) and used simultaneously using, say, the fan-out messaging pattern. E.g.: In addition to an email, PagerDuty.com's API could be invoked simultaneously to alert DevOps on their pager or phone.
