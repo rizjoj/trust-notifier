@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Servers</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-spacing: 0px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Location</th>
+                <th>Environment</th>
+                <th>Release Version</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="server : ${serverList}">
+                <td th:text="${server.key}" />
+                <td th:text="${server.location}" />
+                <td th:text="${server.environment}" />
+                <td th:text="${server.releaseVersion}" />
+                <td th:text="${server.status}" />
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <h2>Update Server Status</h2>
+    <form action="/updateServerStatus" method="POST">
+        <table style="border: 0px;">
+            <tr style="border: 0px;">
+                <td style="border: 0px;">Server Key</td>
+                <td style="border: 0px;"><input type="text" id="key" name="key" /></td>
+            </tr>
+            <tr style="border: 0px;">
+                <td style="border: 0px;">Status</td>
+                <td style="border: 0px;"><input type="text" id="status" name="status" /><br/></td>
+            </tr>
+        </table>
+        <input type="submit" />
+    </form>
+</body>
+</html>

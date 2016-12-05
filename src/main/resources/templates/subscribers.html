@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Subscribers</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-spacing: 0px;
+        }
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Server Instances</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="subscriber : ${subscriberList}">
+                <td th:text="${subscriber.firstname}" />
+                <td th:text="${subscriber.lastname}" />
+                <td th:text="${subscriber.email}" />
+                <td th:text="${subscriber.servers}" />
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <h2>Add Subscriber</h2>
+    <form action="/addSubscriber" method="POST">
+        <table style="border: 0px;">
+            <tr style="border: 0px;">
+                <td style="border: 0px;">First Name</td>
+                <td style="border: 0px;"><input type="text" id="firstname" name="firstname" /></td>
+            </tr>
+            <tr style="border: 0px;">
+                <td style="border: 0px;">Last Name</td>
+                <td style="border: 0px;"><input type="text" id="lastname" name="lastname" /><br/></td>
+            </tr>
+            <tr style="border: 0px;">
+                <td style="border: 0px;">Email</td>
+                <td style="border: 0px;"><input type="text" id="email" name="email" /></td>
+            </tr>
+            <tr style="border: 0px;">
+                <td style="border: 0px;">Servers (in CSV form)</td>
+                <td style="border: 0px;"><input type="text" id="servers" name="servers" /></td>
+            </tr>
+        </table>
+        <input type="submit" />
+    </form>
+</body>
+</html>
