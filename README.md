@@ -15,16 +15,14 @@ On the machine where you are running this application you will need the followin
 
 1. Update the folllowing properties in the `src/main/resources/application.properties` file:
     - `spring.mail.username` This is the email account notifications will be sent from.
-    - `spring.mail.password` This is email password for the above account.
+    - `spring.mail.password` This is the email password for the above account.
     - `com.riz.exercise.application.email.sender` This is the email reply-to address (usually same as the above sender 
     email id).
     - Other `spring.mail.*` properties that corresponding with your SMTP server settings. Leave as is if you will be 
     sending emails from your own gmail.com email account.
     
-2. By default the notifier job runs every quarter of the hour, on the hour 
-(e.g.: 1:30, 1:45, 2:00, 2:15 ...).
- If you don't want to wait that long you can update the 
- `com.riz.exercise.application.scheduler.cron` property.
+2. By default the notifier job runs every quarter of the hour, on the hour (e.g.: 1:30, 1:45, 2:00, 2:15 ...).
+ If you don't want to wait that long you can update the `com.riz.exercise.application.scheduler.cron` property.
 
 
 #### Compile
