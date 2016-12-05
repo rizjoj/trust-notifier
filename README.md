@@ -38,7 +38,8 @@ cd trust-notifier
 
 #### Startup
 
-Once compiled, from the `trust-notifier` directory, run:
+1. Start up your local MongoDB `mongod` server
+2. From the `trust-notifier` directory (parent directory), run:
 ```
 ./mvnw spring-boot:run
 ```
