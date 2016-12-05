@@ -103,9 +103,9 @@ The following validation rules apply to the server key field:
 
 #### Receiving Email Notifications
 
-Mostly, the server instances have a status of 'OK'. This makes it hard to see the email notification in action.
+Mostly, the server instances have a status of 'OK'. This makes it hard to see the email notification in action.<a name="updateserverstatus"></a>
 
-To simulate a change in status and the sending of an email notification do the following:<a name="updateserverstatus"></a>
+To simulate a change in status and the sending of an email notification do the following:
 - Go to the subscribers page: [http://localhost:8080/subscribers](http://localhost:8080/subscribers). 
   <br/>Add or update a subscriber. 
 Make a note of the server(s) that subscriber subscribes to.
