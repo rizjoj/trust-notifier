@@ -171,7 +171,7 @@ simply run the test again (or even a third time) for the integration test specif
 #### Better Developer Feedback and Usability
 
 - **IMPLEMENTED**: [Manually update server status in the local datastore](#updateserverstatus) (to simulate server status change, and thus test email notification)
-- Manual, ad-hoc invokation of the Notifier Job (say, via an http GET request) for testing
+- Manual, ad-hoc invocation of the Notifier Job (say, via an http GET request) for testing
 - Run unit tests during compilation, and integration tests during packaging/deployment
 
 #### Better decoupling of code components
