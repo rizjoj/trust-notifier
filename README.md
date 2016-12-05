@@ -124,12 +124,12 @@ If everything works, you will see an email like:
 ```
 Hello John Smith,
 
-There has been a change of status in 1 SFDC server instances you are subscribing to.
+There has been a change of status in 3 SFDC server instances you are subscribing to.
 
 Here are the current statuses of those servers that have changed:
 
-CS62 -> OK
 EU5 -> MINOR_INCIDENT_CORE
+CS62 -> OK
 CS85 -> OK
 
 Thank you.
