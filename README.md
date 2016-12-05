@@ -34,7 +34,7 @@ cd trust-notifier
 ```
 
 `mvnw` is a maven wrapper that will download and run maven if you don't have it already installed. You may also use 
-`mvn clean install` if you already have maven on your machine.
+`mvn clean install` if you already have maven on your machine. You may need to make `mvnw` executable. In *nix environments you can run `chmod a+x mvnw` to make it executable if it's not already.
 
 #### Startup
 
