@@ -105,7 +105,7 @@ The following validation rules apply to the server key field:
 
 Mostly, the server instances have a status of 'OK'. This makes it hard to see the email notification in action.
 
-To simulate a change in status and the sending of an email notification do the following:
+To simulate a change in status and the sending of an email notification do the following:<a name="updateserverstatus"></a>
 - Go to the subscribers page: [http://localhost:8080/subscribers](http://localhost:8080/subscribers). 
   <br/>Add or update a subscriber. 
 Make a note of the server(s) that subscriber subscribes to.
@@ -170,7 +170,7 @@ simply run the test again (or even a third time) for the integration test specif
 
 #### Better Developer Feedback and Usability
 
-- **IMPLEMENTED**: Manually update server status in the local datastore (to simulate server status change, and thus test email notification)
+- **IMPLEMENTED**: [Manually update server status in the local datastore](#updateserverstatus) (to simulate server status change, and thus test email notification)
 - Manual, ad-hoc invokation of the Notifier Job (say, via an http GET request) for testing
 - Run unit tests during compilation, and integration tests during packaging/deployment
 
