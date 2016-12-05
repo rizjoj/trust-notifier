@@ -1,6 +1,6 @@
 # Trust Notifier
 
-A Notification Application that polls server instances from Salesforce.com's
+A Notification Application written in Java Spring Boot that polls server instances from Salesforce.com's
 [Trust API](https://api.status.salesforce.com/v1/instances) and informs subscribers
 via email whether any server instances they have subscribed to have had a change in status.
 
