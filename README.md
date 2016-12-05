@@ -6,7 +6,7 @@ via email whether any server instances they have subscribed to have had a change
 
 ## Prerequisites
 
-On the machine where your are running this application you will need the following:
+On the machine where you are running this application you will need the following:
 
 - MongoDB 3.x
 - Java JDK 8
