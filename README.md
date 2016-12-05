@@ -160,6 +160,7 @@ simply run the test again (or even a third time) for the integration test specif
 - Spring Boot (with dependencies: Web, Rest, Thymeleaf, Mail, MongoDB)
 - Thymeleaf (UI Views)
 - Spock and Mockito (Testing)
+- Google Guava, Google collections, Lambda expressions
 
 ## Possible Enhancements
 
