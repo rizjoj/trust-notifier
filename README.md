@@ -14,10 +14,10 @@ On the machine where you are running this application you will need the followin
 ## Installation <a name="installation"></a>
 
 1. Update the folllowing properties in the `src/main/resources/application.properties` file:
-    - `spring.mail.username` This is the email account notifications will be sent from, same as above
-    - `spring.mail.password` This is email password for the above account
+    - `spring.mail.username` This is the email account notifications will be sent from.
+    - `spring.mail.password` This is email password for the above account.
     - `com.riz.exercise.application.email.sender` This is the email reply-to address (usually same as the above sender 
-    email id)
+    email id).
     - Other `spring.mail.*` properties that corresponding with your SMTP server settings. Leave as is if you will be 
     sending emails from your own gmail.com email account.
     
